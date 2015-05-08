@@ -8,6 +8,7 @@
 #define BOOST_LOG_DYN_LINK
 
 #include "Logger.h"
+#include <iostream>
 
 
 namespace logging = boost::log;
@@ -27,7 +28,8 @@ Logger::~Logger() {
 
 bool Logger::init(std::string name) {
 	if (name.compare("") == 0 ) {
-		return 0;
+		std::cout << "error in name"<<std::endl;
+		return false;
 	}
 	logging::add_file_log(
 		keywords::file_name = name + "_%N.log",
@@ -39,11 +41,11 @@ bool Logger::init(std::string name) {
 	    )
 	);
 	logging::add_common_attributes();
-	return 1;
+	return true;
 }
 
 void Logger::info(std::string message) {
-	BOOST_LOG_SEV(lg, logging::trivial::info) << message;
+	BOOST_LOG_SEV(lg, logging::trivial::info) << message ;
 }
 void Logger::error(std::string message) {
 	BOOST_LOG_SEV(lg, logging::trivial::error) << message;

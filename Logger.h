@@ -8,6 +8,7 @@
 #ifndef LOGGER_LOGGER_H_
 #define LOGGER_LOGGER_H_
 #include <string>
+#include <sstream>
 #include <boost/date_time/posix_time/posix_time_types.hpp>
 #include <boost/log/trivial.hpp>
 #include <boost/log/expressions.hpp>
