@@ -27,7 +27,7 @@ example : $(SOURCES) $(HEADERS) example.cpp
 #test : $(SOURCES) $(HEADERS) ../catch.hpp testLogger.cpp
 #	$(CC) $(SOURCES) testLogger.cpp $(LIBS) -o test
 
-metatest : $(SOURCES) $(HEADERS) ../catch.hpp testLogger.cpp
+metatest : $(SOURCES) $(HEADERS) $$SAILINGROBOTS_HOME/catch.hpp testLogger.cpp
 	$(CC) $(SOURCES) testLogger.cpp -fprofile-arcs -ftest-coverage $(LIBS) -o metatest 
 
 
