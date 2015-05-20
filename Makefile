@@ -27,14 +27,13 @@ example : $(SOURCES) $(HEADERS) example.cpp
 #test : $(SOURCES) $(HEADERS) ../catch.hpp testLogger.cpp
 #	$(CC) $(SOURCES) testLogger.cpp $(LIBS) -o test
 
-metatest : $(SOURCES) $(HEADERS) $$SAILINGROBOTS_HOME/catch.hpp testLogger.cpp
-	$(CC) $(SOURCES) testLogger.cpp -fprofile-arcs -ftest-coverage $(LIBS) -o metatest 
+metatest : $(SOURCES) $(HEADERS) $(SAILINGROBOTS_HOME)/tests/catch.hpp $(SAILINGROBOTS_HOME)/tests/testsuite/testLogger.cpp
+	$(CC) $(SOURCES) $(SAILINGROBOTS_HOME)/tests/testsuite/testLogger.cpp -fprofile-arcs -ftest-coverage $(LIBS) -o metatest 
 
 
 clean :
 	rm -f $(FILE)
 	rm -f example
-	rm -f test
 	rm -f metatest
 	rm -f *.gcda
 	rm -f *.gcno
