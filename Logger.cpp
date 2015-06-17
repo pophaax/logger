@@ -18,8 +18,7 @@ namespace keywords = boost::log::keywords;
 
 
 Logger::Logger() {
-	// TODO Auto-generated constructor stub
-
+	m_logger = global_logger::get();
 }
 
 Logger::~Logger() {
@@ -32,6 +31,7 @@ bool Logger::init(std::string name) {
 		return false;
 	}
 	logging::add_file_log(
+		keywords::auto_flush = true,
 		keywords::file_name = name + "_%N.log",
 	    keywords::format = (
 	        expr::stream
@@ -41,14 +41,15 @@ bool Logger::init(std::string name) {
 	    )
 	);
 	logging::add_common_attributes();
+
 	return true;
 }
 
 void Logger::info(std::string message) {
-	BOOST_LOG_SEV(lg, logging::trivial::info) << message ;
+	BOOST_LOG_SEV(m_logger, logging::trivial::info) << message ;
 }
 void Logger::error(std::string message) {
-	BOOST_LOG_SEV(lg, logging::trivial::error) << message;
+	BOOST_LOG_SEV(m_logger, logging::trivial::error) << message;
 }
 
 

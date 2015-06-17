@@ -17,6 +17,11 @@
 #include <boost/log/utility/setup/file.hpp>
 #include <boost/log/utility/setup/common_attributes.hpp>
 #include <boost/log/support/date_time.hpp>
+#include <boost/log/sources/global_logger_storage.hpp>
+
+BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(global_logger,
+		boost::log::sources::severity_logger<
+			boost::log::trivial::severity_level>)
 
 class Logger {
 public:
@@ -37,7 +42,8 @@ public:
 	virtual ~Logger();
 
 private:
-	boost::log::sources::severity_logger< boost::log::trivial::severity_level > lg;
+	boost::log::sources::severity_logger< 
+		boost::log::trivial::severity_level > m_logger;
 };
 
 #endif /* LOGGER_LOGGER_H_ */
