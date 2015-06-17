@@ -20,7 +20,7 @@
 #include <boost/log/sources/global_logger_storage.hpp>
 
 BOOST_LOG_INLINE_GLOBAL_LOGGER_DEFAULT(global_logger,
-		boost::log::sources::severity_logger<
+		boost::log::sources::severity_logger_mt<
 			boost::log::trivial::severity_level>)
 
 class Logger {
@@ -42,7 +42,7 @@ public:
 	virtual ~Logger();
 
 private:
-	boost::log::sources::severity_logger< 
+	boost::log::sources::severity_logger_mt< 
 		boost::log::trivial::severity_level > m_logger;
 };
 
