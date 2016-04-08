@@ -8,7 +8,7 @@
 #######################################################
 
 CC = g++
-FLAGS = -Wall -pedantic -Werror -pthread -std=c++14
+FLAGS = -g -Wall -pedantic -Werror -pthread -std=c++14
 LIBS =  -lboost_system -lboost_log_setup -lboost_log -lboost_date_time -lboost_thread -lrt -lboost_filesystem
 
 SOURCES = Logger.cpp
